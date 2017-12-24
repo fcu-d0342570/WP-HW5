@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HOME WORK</title>
+        <meta charset = "utf-8">
+        <style>
+            #map{
+                height: 1000px;
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="map"></div>
+        <script>
+            var map;
+            function initMap(){
+                map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 16,
+                    center: new google.maps.LatLng(24.178887, 120.646738),
+                    mapTypeId: 'roadmap'
+                });
+                var icons = {
+                    gas: {
+                        icon: 'gas.png'
+                    },
+                    mail: {
+                        icon: 'mail.png'
+                    }
+                };
+                var features = [
+                    {
+                        position: new google.maps.LatLng(24.179443, 120.634414),
+                        type: 'gas',
+                        contentString: '<h3>台塑石油環中站:台中市西屯區環中路二段1286號</h3>'
+                    }, {
+                        position: new google.maps.LatLng(24.172178, 120.645456),
+                        type: 'gas',
+                        contentString: '<h3>台灣中油河南路站:台中市西屯區河南路二段341號</h3>'
+                    }, {
+                        position: new google.maps.LatLng(24.171347, 120.643988),
+                        type: 'gas',
+                        contentString: '<h3>台灣中油青海站:台中市西屯區青海路二段211號</h3>'
+                    }, {
+                        position: new google.maps.LatLng(24.173881, 120.660002),
+                        type: 'gas',
+                        contentString: '<h3>台亞石油:台中市西屯區河南路二段35號</h3>'
+                    }, {
+                        position: new google.maps.LatLng(24.183833, 120.629880),
+                        type: 'gas',
+                        contentString: '<h3>福懋加油站:台中市西屯區西屯路三段90之28號</h3>'
+                    }, {
+                        position: new google.maps.LatLng(24.171540, 120.659787),
+                        type: 'gas',
+                        contentString: '<h3>台灣中油:台中市西屯區文心路三段187號</h3>'
+                    }, {
+                        position: new google.maps.LatLng(24.182479, 120.633685),
+                        type: 'gas',
+                        contentString: '<h3>全國加油站:台中市西屯區西屯路三段77之3號</h3>'
+                    }, {
+                        position: new google.maps.LatLng(24.165791, 120.645201),
+                        type: 'gas',
+                        contentString: '<h3>全國加油站:台中市西屯區台灣大道三段258號</h3>'
+                    }, {
+                        position: new google.maps.LatLng(24.163025, 120.650109),
+                        type: 'gas',
+                        contentString: '<h3>台灣中油文心站:台中市西屯區文心路三段2號</h3>'
+                    }, {
+                        position: new google.maps.LatLng(24.175275, 120.649134),
+                        type: 'mail',
+                        contentString: '<h3>臺中逢甲郵局:台中市西屯區河南路2段268號</h3>'
+                    }, {
+                        position: new google.maps.LatLng(24.164913, 120.654121),
+                        type: 'mail',
+                        contentString: '<h3>台中何厝郵局:台中市西屯區青海路一段83號</h3>'
+                    }, {
+                        position: new google.maps.LatLng(24.176993, 120.637659),
+                        type: 'mail',
+                        contentString: '<h3>台中西屯郵局:台中市西屯區黎明路三段130號</h3>'
+                    }, {
+                        position: new google.maps.LatLng(24.177593, 120.669680),
+                        type: 'mail',
+                        contentString: '<h3台中水湳郵局:台中市北屯區四平路1號</h3>'
+                    }
+                ];
+                features.forEach(function(feature) {
+                    var marker = new google.maps.Marker({
+                        position: feature.position,
+                        icon: icons[feature.type].icon,
+                        map: map
+                    });
+                    var infowindow = new google.maps.InfoWindow({
+                        content: feature.contentString
+                    });
+                    marker.addListener('mouseover', function() {
+                    infowindow.open(map, marker);
+                });
+                });                       
+                
+            }
+            </script>
+            <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBa-wk12U1TePsviFbueKd2SPnJeLwBSKw&callback=initMap"></script>
+    </body>
+</html>
